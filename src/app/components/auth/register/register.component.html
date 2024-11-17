@@ -1,0 +1,131 @@
+<nav class="navbar navbar-expand-lg navbar bg fixed-top" style="background-color: white">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" href="">
+      <img src="assets/images/logo/logo.PNG" height="60" alt="Logo" loading="lazy" style="margin-top: -1px;"/>
+      <h3>Maison des jeunes</h3>
+    </a>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+      <!-- Left links -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li>
+          <a [routerLink]="['/register']" type="button" class="btn   btn-secondary btn-lg mt-4 me-2"
+             aria-controls="#picker-editor" draggable="false">Inscription</a>
+        </li>
+        <li>
+          <a [routerLink]="['/login']" type="button" class="btn   btn-outline-secondary btn-lg mt-4"
+             aria-controls="#picker-editor" draggable="false">Login</a>
+        </li>
+
+      </ul>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<div class="container">
+  <div class="card" style="background-color: #f4e5f0">
+    <div class="card-body">
+      <div class="row d-flex align-items-center">
+        <div class="col-md-6 col-xl-7">
+          <div class="text-center">
+            <img
+              style="border: #ac2bac 1px solid; border-radius: 10px 10px 10px 10px"
+              src="assets/images/logo/logo.PNG" alt="" class="img-fluid rounded-start" width="300"/>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4 text-center">
+          <h2 class="fw-bold mb-4 ">Inscription</h2>
+          <div class="md-form md-outline">
+
+            <input mdbInput type="text" class="form-control" placeholder=" Entrer votre nom">
+
+          </div>
+          <br>
+          <div class="md-form md-outline">
+
+            <input mdbInput type="text" class="form-control" placeholder=" Entrer votre prenom">
+
+          </div>
+          <br>
+          <div class="md-form md-outline">
+
+            <input mdbInput type="tel" class="form-control" placeholder=" Entrer votre numero téléphone">
+
+          </div>
+          <br>
+          <div class="md-form md-outline">
+
+            <input type="password" id="form2Example2" class="form-control" placeholder="Entrer votre mot de passe"/>
+
+          </div>
+          <!--          <br>-->
+          <!--          <div class="md-form md-outline">-->
+
+          <!--            <input type="number" id="form2Example2" class="form-control" placeholder="Entre Code" />-->
+
+          <!--          </div>-->
+          <br>
+          <div class="text-center">
+            <button class="btnI btn-primary btn-block btn-lg"
+                    data-mdb-toggle="modal" data-mdb-target="#editeprofile" (click)="compterCode()">Inscription
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="editeprofile"
+  data-mdb-backdrop="static"
+  data-mdb-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Vérification de code</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- input Nom -->
+          <div class="input-group mb-3" *ngIf="secondes > -1">
+            <input type="text" class="form-control rounded" placeholder="Code confidentiel" aria-label="Code confidentiel"
+                   aria-describedby="basic-addon1"/>
+          </div>
+
+          <div class="input-group mb-3" *ngIf="secondes < 0">
+            <input type="text" class="form-control rounded" readonly placeholder="Code confidentiel" aria-label="Code confidentiel"
+                   aria-describedby="basic-addon1"/>
+          </div>
+
+          <div class="input-group mb-3" *ngIf="secondes > -1">
+            <span style="color: red">Demander un nouveau code en {{secondes}} s</span>
+          </div>
+          <div class="input-group mb-3" *ngIf="secondes < 0">
+            <span style="color: red">Code expiré</span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-secondary">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+

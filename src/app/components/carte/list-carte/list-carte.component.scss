@@ -1,0 +1,16 @@
+.card-list li.page-item {
+  height: 36px;
+}
+.card-list .form-check-input[type="checkbox"] + label:before, .form-check-input[type="checkbox"]:not(.filled-in) + label:after, label.btn input[type="checkbox"] + label:before, label.btn input[type="checkbox"]:not(.filled-in) + label:after {
+  margin-top: 0;
+}
+.card-list .form-check-input[type="checkbox"] + label, label.btn input[type="checkbox"] + label {
+  height: 15px;
+}
+.card-list .form-check {
+  height: 0;
+}
+.card-list .badge {
+  height: 18px;
+  margin-top: 3px;
+}

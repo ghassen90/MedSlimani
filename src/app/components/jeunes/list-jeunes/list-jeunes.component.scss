@@ -1,0 +1,46 @@
+@media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+
+  .button{
+    transform: translate(900%, 200%);
+    background-color: #ac2bac;
+  }
+  
+  .sidebar {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 5px 0 0;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+      width: 240px;
+      height: 630px;
+      z-index: -222;
+   
+  }
+  
+  @media (max-width: 991.98px) {
+    .sidebar {
+      width: 100%;
+    }
+  }
+  .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+  .active{
+    background-color: #710cf5;  
+    border-color: #710cf5; 
+
+  }

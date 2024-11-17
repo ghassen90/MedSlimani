@@ -1,0 +1,445 @@
+<div class="bg-light">
+  <section class="bg-white mb-1 shadow-1">
+    <div class="container">
+      <section class="mb-1">
+        <div data-mdb-target="#uploadCoverture" data-mdb-toggle="modal"
+             class="bg-doge p-5 text-center bg-image shadow-1-strong rounded "
+             style="background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000'); height: 200px;">
+        </div>
+        <div data-mdb-target="#uploadLogo" data-mdb-toggle="modal" class="bg-doge-logo d-flex justify-content-center">
+          <img src="assets/images/logo/logo.ariana.jpg"
+               alt="" class="shadow-4-strong position-absolute rounded-circle"
+               style="z-index: 3; width: 160px;margin-top: -140px;"></div>
+        <div class="modal fade" id="uploadLogo"
+             data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Changement de logo</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="my-2">
+                  <section class="text-center dark-grey-text">
+                    <a class="btn btn-outline-info btn-md mt-3 waves-effect" role="button">
+                      Charger image<i class="fa fa-upload" style="margin-left: 10px"></i></a>
+                  </section>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-secondary">Changer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="uploadCoverture"
+             data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Changement de couverture</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="my-2">
+                  <section class="text-center dark-grey-text">
+                    <a class="btn btn-outline-info btn-md mt-3 waves-effect" role="button">
+                      Charger image<i class="fa fa-upload" style="margin-left: 10px"></i></a>
+                  </section>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-secondary">Changer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="text-center border-bottom">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6 mt-4">
+            <span>
+              <strong style="font-size: 25px;">{{nomPrenom | uppercase}}</strong>
+              <i data-mdb-toggle="modal" data-mdb-target="#editeprofile" class="fa fa-edit"
+              style="margin-left: 10px;cursor: pointer"></i>
+            </span>
+          </div>
+        </div>
+      </section>
+      <section class="py-3 d-flex justify-content-end">
+        <div
+          class="modal fade"
+          id="editeprofile"
+          data-mdb-backdrop="static"
+          data-mdb-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modifier profile</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formModifUser">
+                  <!-- input Nom -->
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded"
+                     placeholder="Nom" aria-label="nom"
+                     formControlName="nom"
+                           aria-describedby="basic-addon1"/>
+                  </div>
+
+                  <!--input photo  -->
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded"
+                    formControlName="prenom"
+                    placeholder="Prenom" aria-label="prenom"
+                           aria-describedby="basic-addon1"/>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Annuler</button>
+                <button type="button" (click)="modiProfileUser()" class="btn btn-secondary">Modifier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="addStory"
+          data-mdb-backdrop="static"
+          data-mdb-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Ajouter story</h5>
+                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                   <!--   <form [formGroup]="formStory" (ngSubmit)="addStory()">-->
+                    <form >
+
+                    <div style="background-color: #710cf5" class="card mt-3 mb-3 pt-5 pb-5">
+                        <p class="card-text text-center" style="color: white;">
+                          Créer une story avec photos
+                        </p>
+                      <div class="card-body">
+
+
+                        <div class="card-body">
+                      </div>
+                      </div>
+                    </div>
+
+                </form>
+           </div>
+           </div>
+
+                </div>
+                <section>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div
+          class="modal fade"
+          id="consultStory"
+          data-mdb-backdrop="static"
+          data-mdb-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #ffffff; width: 100%; height: 600px">
+              <div class="modal-content" style="background-color: #ffffff; width: 100%; height: 600px">
+                <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img height="600" style="border-radius: 5px;" src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>
+                    </div>
+                    <div class="carousel-item">
+                      <img height="600" style="border-radius: 5px;" src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
+                    </div>
+                    <div class="carousel-item">
+                      <img height="600" style="border-radius: 5px;" src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <button *ngIf="role === 'ROLE_ADMIN'" data-mdb-target="#addStory" data-mdb-toggle="modal" type="button" class="btn btn-secondary bg-secondary mr-2" data-ripple-color="dark">Ajouter Story
+        </button>
+        <button *ngIf="role === 'ROLE_JEUNES'" data-mdb-target="#consultStory" data-mdb-toggle="modal" type="button" class="btn btn-secondary bg-secondary mr-2" data-ripple-color="dark">Consulter Story
+        </button>
+      </section>
+    </div>
+  </section>
+  <section>
+    <div class="row mb-1" >
+      <div class="col-12">
+        <div class="card" >
+          <div class="card-body" >
+            <h5 class="card-title" ><strong>Informations générales</strong></h5>
+
+            <div
+              ></div>
+            <div *ngFor="let mais of currentMaison"  class="row" style="border-bottom: 5px solid;" >
+              <div class="col-10" >
+                <ul class="list-unstyled text-muted">
+                  <li>
+                    <i class="fas fa-home"></i>
+
+                    <a style="margin-left: 4px;" alt=""><strong> <span>{{mais?.nom_maison_jeunes}}</span></strong></a>
+                  </li>
+                  <li>
+                    <i class="fas fa-phone"></i>
+                    <a style="margin-left: 4px;" alt=""><strong>Tel</strong> <span style="margin-left: 4px;">{{mais?.tel_fixe}}</span></a>
+                  </li>
+                  <li>
+                    <i class="fas fa-city"></i>
+                    <a style="margin-left: 4px;" alt=""><strong>Gouvernorat</strong><span style="margin-left: 4px;">{{mais?.gouvernorat}}</span></a>
+                  </li>
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a style="margin-left: 4px;" alt=""><strong>Address</strong><span style="margin-left: 4px;">{{mais?.adresse}}</span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2 text-end" *ngIf="false">
+                <i data-mdb-toggle="modal" data-mdb-target="#editeIntro" data-mdb-toggle="modal"
+                   data-mdb-target="#editeprofile" class="fa fa-edit"
+                   style="margin-left: 10px;cursor: pointer"></i>
+              </div>
+            </div>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="editeIntro"
+              data-mdb-backdrop="static"
+              data-mdb-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Intro</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <!-- input Nom -->
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control rounded" placeholder="nom" aria-label="nom"
+                               aria-describedby="basic-addon1"/>
+                      </div>
+
+                      <!--input co-fondateur  -->
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control rounded" placeholder="co-fondateur"
+                               aria-label="co-fondateur" aria-describedby="basic-addon1"/>
+                      </div>
+                      <!--input localisation -->
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control rounded" placeholder="localisation"
+                               aria-label="localisation" aria-describedby="basic-addon1"/>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary">Edite</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-2">
+          <div class="card-body" *ngIf="role === 'ROLE_ADMIN'">
+            <div class="d-flex">
+              <button class="btn-block btn btn-secondary bg-secondary"
+                      data-mdb-toggle="modal" data-mdb-target="#ajouterPoste">
+                      <span style="font-weight: bold">Publier un événement</span>
+              </button>
+              <div
+                class="modal fade"
+                id="ajouterPoste"
+                data-mdb-backdrop="static"
+                data-mdb-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Créer un événement</h5>
+                      <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!--  <form ngIf="currentFile">-->
+                          <form [formGroup]="formEvent">
+                        <div  class="md-form md-outline">
+                          <input formControlName="titre" mdbInput type="text" class="form-control" placeholder="Titre">
+                        </div>
+                        <!--input Poste -->
+                        <div class="input-group mt-2 mb-2">
+                            <textarea class="form-control"
+                            formControlName="description" placeholder="Description"
+                                      aria-describedby="basic-addon1" style="height: 150px"></textarea>
+                        </div>
+
+                        <div class="input-group mt-2 mb-2">
+                        <select  formControlName="id_user" name="pets" id="pet-select">
+                          <option value="">--select utilisateur--</option>
+                          <option value="{{user.id_user}}" *ngFor="let user of listUsers">{{user.nom +" "+ user.prenom}}</option>
+                        </select>
+                      </div>
+
+                      <div class="input-group mt-2 mb-2">
+                        <select  formControlName="id_maisonjeunes" name="pets" id="pet-select">
+                          <option value="">--select maison des jeunes--</option>
+
+                          <option value="{{maison.id_maisonjeunes}}" *ngFor="let maison of listeMaison">{{maison.nom_maison_jeunes}}</option>
+                        </select>
+                      </div>
+
+                     <div class="text-center dark-grey-text">
+                      <input class="form-control"  type="file" >
+                        <!--  <a class="btn btn-outline-info btn-md mt-3 waves-effect" role="button">
+                            Charger image<i class="fa fa-upload" style="margin-left: 10px"></i></a>
+                            -->
+                        </div>
+                        <div class="modal-footer">
+
+                          <button type="button" class="btn btn-secondary btn-block mb-4" (click)="addEvent()">Publier</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngIf="listeEvents?.length">
+          <section *ngFor="let event of listeEvents">
+            <div class="card card-list" style="border: rgba(14,0,50,0.25) 1px solid">
+              <div class="card-header white d-flex justify-content-between align-items-center py-3">
+                <div class="d-flex justify-content-start align-items-center">
+                  <img src="assets/images/logo/logo.ariana.jpg"
+                       class="z-depth-1 rounded-circle" width="45" alt="avatar image">
+                  <div class="d-flex flex-column pl-3">
+                    <a style="margin-left: 10px" class="font-weight-normal mb-0">{{event.nameMaisonjeunes | uppercase}}</a>
+                    <p style="margin-left: 10px" class="small text-muted mb-0">{{event.time |  date : "dd/MM/yyy"}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <img style="border: rgba(14,0,50,0.25) 1px solid" width="1000"
+                     src="data:image/jpeg;base64,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"
+                     class="img-fluid">
+                <hr>
+
+                <p class="my-4 justify-content-center">
+
+
+                </p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex flex-row">
+                    <button (click)="show = true" *ngIf="!show" type="button" class="btn-primary btn btn-fb btn-sm py-1 px-2 m-0 mr-2"><i
+                       class="far fa-thumbs-up pr-1"></i> J'aime
+                    </button>
+                    <button (click)="show = false" *ngIf="show" type="button" class="btn-primary btn btn-fb btn-sm py-1 px-2 m-0 mr-2"><i
+                       class="far fa-thumbs-up pr-1"></i> J'aime déjà
+                    </button>
+                  </div>
+                  <div class="d-flex flex-column pl-3">
+                    <p class="small text-muted mb-0">{{event.userLikes}} J'aimes - {{event.usercommentsCount}} Commenters</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-1" style="border-top: rgba(14,0,50,0.25) 1px solid">
+                <div class="py-4 grey lighten-4">
+                  <div class="px-3" *ngIf="event?.userComments">
+                    <div *ngFor="let comment of event.userComments">
+
+                      {{comment}}/
+                      <div class="card-header white d-flex justify-content-between align-items-center py-3">
+                        <div class="d-flex justify-content-start align-items-center">
+                          <img src="assets/images/logo/logo.ariana.jpg"
+                               class="z-depth-1 rounded-circle" width="45" alt="avatar image">
+                          <div class="d-flex flex-column pl-3">
+                            <a style="margin-left: 10px" class="font-weight-normal mb-0">{{comment?.nameUser | uppercase}}</a>
+                            <p style="margin-left: 10px" class="small text-muted mb-0">{{comment?.time | date : "dd/MM/yyyy"}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="margin-left: 100px">
+                      <span style="margin-left: 50px">
+                         <p style="text-align: justify">{{comment.description}}</p>
+                      </span>
+                      <hr class="my-3">
+                      </div>
+                    </div>
+                  </div>
+                  <form [formGroup]="formAddComment" class="card-footer white py-3">
+                    <div class="form-group mb-0">
+                  <textarea formControlName="description" class="form-control rounded-0" rows="2" placeholder="Créer votre commenter">
+                  </textarea>
+                      <div class="text-right pt-1">
+                        <button (click)="addComment(event)"
+                                type="submit" class="btn btn-primary btn-sm mb-0 mr-0">
+                          <i class="fas fa-paper-plane"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

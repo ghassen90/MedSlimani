@@ -1,0 +1,191 @@
+<div>
+    <div class="row">
+        <div class="col-12 text-end">
+            <button *ngIf="role === 'ROLE_ADMIN'" data-mdb-toggle="modal" data-mdb-target="#ajoutGroup"
+                class="btn btn-primary btn-md">
+                Ajouter un groupe
+                <i class="fas fa-plus" style="margin-left: 5px"></i>
+            </button>
+        </div>
+
+        <div class="modal fade" id="ajoutGroup" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ajouter un groupe</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form [formGroup]="formGroupe" (ngSubmit)="addGroupe()">
+                            <div class="md-form md-outline mt-3">
+                                <input formControlName="nom_groupe" mdbInput type="text" class="form-control"
+                                    placeholder="Titre">
+                            </div>
+
+                            <div class="md-form md-outline mt-3">
+                                <textarea formControlName="description" mdbInput type="text" class="form-control"
+                                    placeholder="Description" aria-describedby="basic-addon1" style="height: 150px">
+                              </textarea>
+                            </div>
+                            <div class="md-form md-outline mt-3">
+                                <select formControlName="category" mdbInput class="form-control" name="categorie">
+                                    <option>---select une categorie---</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Media">Media</option>
+                                    <option value="Dessin">Dessin</option>
+                                    <option value="Radio">Radio</option>
+                                    <option value="Informatique">Informatique</option>
+                                </select>
+                            </div>
+                            <!--              <div class="text-center dark-grey-text">-->
+                            <!--                <a class="btn btn-outline-info btn-md mt-3 waves-effect" role="button">-->
+                            <!--                  Charger image<i class="fa fa-upload" style="margin-left: 10px"></i></a>-->
+                            <!--              </div>-->
+                            <div class="modal-footer">
+
+                                <button type="submit" data-mdb-dismiss="modal" aria-label="Close"
+                                    class="btn btn-secondary btn-block mb-4">Ajouter</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <span style="font-size: 25px; color: gray; font-weight: bold">Liste des groupes</span>
+        </div>
+    </div>
+    <hr>
+    <div class="container my-5">
+        <section>
+            <div class="row">
+
+                <div class="col-md-6 col-lg-4 mb-3 col-12 " *ngFor="let groupe of listGroupes">
+
+                    <div style="border: rgba(0,0,0,0.33) 1px solid" class="card card-ecommerce">
+
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <span class="p-2" style="color: orange;" *ngIf="role === 'ROLE_ADMIN'">
+                                    <i (click)="updateGroupe(groupe)" type="button" data-mdb-toggle="modal"
+                                        data-mdb-target="#updateGroup" class="fas fa-pen"></i>
+                                </span>
+                                <span *ngIf="role === 'ROLE_ADMIN'">
+                                    <i (click)="deleteGroupe(groupe.id_groupe)" type="button" class="fas fa-trash"
+                                        style="color: red;"></i>
+                                </span>
+                                <button *ngIf="role === 'ROLE_JEUNES'" (click)="regoindreGroup(groupe)"
+                                    class="btn btn-primary btn-md">
+                                    <span *ngIf="!groupe.id_user" class="p-2">
+                                        <i type="button" class="fas fa-plus-circle"></i><span
+                                            style="margin-left: 5px">Rejoinder</span>
+                                    </span>
+
+                                    <span *ngIf="groupe.id_user && (groupe.status === 'accept')" class="p-2">
+                                        <i type="button" class="fas fa-check"></i><span
+                                            style="margin-left: 5px">Membre</span>
+                                    </span>
+
+                                    <span *ngIf="groupe.id_user && (groupe.status === 'encours')" class="p-2">
+                                        <span style="margin-left: 5px; color: orange">En cours</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-12 text-center">
+                                <img class="pt-4" src="assets/images/images/groupe/sport.png"
+                                    style="border-radius: 10px" height="150" alt="Sample image">
+                            </div>
+                            <div class="col-12 pl-lg-0">
+                                <div class="card z-depth-0">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-1">
+                                            <strong><a class="dark-grey-text">{{groupe.nom_groupe}}</a></strong>
+                                        </h5>
+                                        <div class="row" style="border-radius: 10px">
+                                            <p style="text-align: justify;">{{groupe.description}}</p>
+                                        </div>
+                                        <div class="row" style="border-radius: 10px">
+                                            <p style="font-weight: bold;">{{groupe.category}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="!listGroupes?.length">
+                <div class="col-12 text-center">
+                    <span style="font-weight: bold; font-size: 18px; color: gray">Aucun element</span>
+                </div>
+            </div>
+            <!------------Popup Update Groupe--------->
+            <div class="modal fade" id="updateGroup" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modifier un groupe</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+
+                        <div class="modal-body">
+
+                            <form [formGroup]="formGroupe" (ngSubmit)="upgroup()">
+
+                                <div class="md-form md-outline mt-3">
+                                    <input formControlName="nom_groupe" mdbInput type="text" class="form-control"
+                                        placeholder="Titre" value="{{updateGroup}}">
+                                </div>
+                                <!--input Poste -->
+                                <div class="md-form md-outline mt-3">
+                                    <textarea formControlName="description" mdbInput type="text" class="form-control"
+                                        placeholder="Description" aria-describedby="basic-addon1"
+                                        style="height: 150px"></textarea>
+                                </div>
+                                <div class="md-form md-outline mt-3">
+                                    <select formControlName="category" mdbInput class="form-control" name="categorie">
+                                        <option>---select une categorie---</option>
+                                        <option value="Sport">Sport</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Dessin">Dessin</option>
+                                        <option value="Radio">Radio</option>
+                                        <option value="Informatique">Informatique</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="submit" data-mdb-dismiss="modal" aria-label="Close"
+                                        class="btn btn-secondary btn-block mb-4">Modifier</button>
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!------------End Popup Update Groupe--------->
+        </section>
+    </div>
+</div>

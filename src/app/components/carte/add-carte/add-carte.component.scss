@@ -1,0 +1,84 @@
+
+.btn{  
+    color: #ffff;
+    background-color:#414de9 ;
+
+}
+#boite1
+{
+width: 460px;
+height: 300px;
+background-color:rgb(113, 12, 245) ;
+}
+#boite2
+{
+padding: 10px;
+background-color:rgb(245, 237, 255);
+width: 100%;
+height: 100%;
+border: 2px solid rgb(255, 255, 255);
+border-radius: 0px 150px 0px 150px;
+
+}
+#container1{
+    display: flex;
+    flex-direction: row;
+}
+#logo
+{
+width: 100px;
+height: 50px;
+}
+#groupe-titres{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+h1{
+    font-size: 15px;
+    text-align: center;
+
+}
+span{
+    font-size: 10px;
+
+}
+
+#boite3{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+#profil{
+    width: 100px;
+    height: 80px;
+    align-self: center;
+}
+#image{
+    align-self: center;
+
+}
+th{
+text-align: left;
+}
+td{
+    text-align: right;
+
+}
+#mes-infos{
+    margin-left: 10px;
+    position: relative;
+
+}
+
+#boite4{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+h5,#qr{
+    width: 80px;
+    height: 45px;
+}

@@ -1,0 +1,44 @@
+ sshfs ubuntu@51.68.172.30:/home/ubuntu/maison khadhra/
+ sshfs ubuntu@51.68.172.30:/home/ubuntu/backend backend
+ ssh ubuntu@51.68.172.30
+ ng serve --port 4201 --host 51.68.172.30
+ 
+pm2 start server.js
+
+ll /var/www/html
+
+ng build --prod
+sudo chmod -R 775 /home/ubuntu/maison/dist
+sudo chmod -R 777 /home/ubuntu/maison/dist
+sudo ng build
+sudo cp -r project-mdb/* /var/www/html/angular-app
+
+  
+sudo nano /etc/nginx/sites-available/angular-app
+
+/******************************************************/
+server {
+    listen 80;
+    server_name 51.68.172.30;
+
+    root /var/www/html/angular-app;  # Chemin vers les fichiers Angular
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ~* \.(?:manifest|json|png|jpg|jpeg|gif|bmp|ico|svg|webp|css|js|map)$ {
+        try_files $uri =404;
+        expires 1y;
+        access_log off;
+        add_header Cache-Control "public, no-transform";
+    }
+}
+/***************************************************/
+
+sudo ln -s /etc/nginx/sites-available/angular-app /etc/nginx/sites-enabled/
+sudo nginx -t
+
+
+sudo cp project-mdb/* /var/www/html/angular-app

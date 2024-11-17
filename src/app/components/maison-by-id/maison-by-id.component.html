@@ -1,0 +1,38 @@
+<div *ngFor="let event of events" class="card mb-3">
+    <div class="card-header">
+        <!-- Titre de l'événement -->
+        <h5>{{ event.titre }}</h5>
+        <small class="text-muted">ID: {{ event.id_event }}</small>
+    </div>
+    <div class="card-body">
+        <!-- Description et heure de l'événement -->
+        <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+
+        <!-- Image de l'événement -->
+        <img *ngIf="event.image" [src]="event.image" alt="{{ event.titre }}" class="img-fluid mb-3">
+
+        <!-- Compteur de likes et de commentaires -->
+        <p><strong>Likes:</strong> {{ event.userLikes }}</p>
+        <p><strong>Total Comments:</strong> {{ event.usercommentsCount }}</p>
+
+        <!-- Liste des commentaires -->
+        <h6>Comments</h6>
+        <ul class="list-group mb-3">
+            <li *ngFor="let comment of event.userComments" class="list-group-item">
+                <strong>{{ comment.nameUser }}:</strong> {{ comment.description }}
+            </li>
+        </ul>
+
+        <!-- Formulaire pour ajouter un commentaire -->
+        <form [formGroup]="commentForm" (ngSubmit)="addComment(event.id_event)">
+            <div class="input-group mb-3">
+                <input formControlName="description" type="text" class="form-control" placeholder="Add a comment">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+
+        <!-- Bouton de like -->
+        <button (click)="addLike(event.id_event)" class="btn btn-outline-primary">Like</button>
+    </div>
+</div>

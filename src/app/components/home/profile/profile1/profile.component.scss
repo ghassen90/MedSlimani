@@ -1,0 +1,55 @@
+:host {
+  body {
+    background-color: #fbfbfb;
+  }
+
+  @media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+
+  .container {
+    max-width: 1400px;
+  }
+
+  .bg-doge {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg-doge:hover {
+    cursor: pointer;
+    position: relative;
+    height: 600px;
+    display: flex;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    opacity: .6;
+  }
+
+  .bg-doge-logo {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg-doge-logo:hover {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: .6;
+  }
+
+}

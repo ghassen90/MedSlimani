@@ -1,0 +1,56 @@
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="margin-top: 30px !important;">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+            <button [ngClass]="{'active' : show === 1}" class="list-group-item list-group-item-action py-1" (click)="routing('/espace/profile', 1);$event.stopImmediatePropagation()">
+        <i class="fas fa-clinic-medical fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Profile</span>
+      </button>
+            <button *ngIf="role === 'ROLE_ADMIN_GENERAL'" [ngClass]="{'active' : show === 2}" class="list-group-item list-group-item-action py-1" (click)="routing('/espace/maisons', 2);$event.stopImmediatePropagation()">
+        <i class="fas fa-clinic-medical fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Maisons</span>
+      </button>
+            <button *ngIf="role === 'ROLE_ADMIN' || role === 'ROLE_JEUNE'" [ngClass]="{'active' : show === 2}" class="list-group-item list-group-item-action py-1" (click)="routing('/espace/liste-event', 2);$event.stopImmediatePropagation()">
+        <i class="fas fa-clinic-medical fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Evenements</span>
+      </button>
+            <button *ngIf="role === 'ROLE_ADMIN_GENERAL'" [ngClass]="{'active' : show === 3}" class="list-group-item list-group-item-action py-1" (click)="routing('/espace/utilisateurs', 3)">
+        <i class="fas fa-universal-access fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Utilisateurs</span>
+      </button>
+            <button *ngIf="(role === 'ROLE_ADMIN_GENERAL')" [ngClass]="{'active' : show === 4}" class="list-group-item list-group-item-action py-1 ripple" (click)="routing('/espace/cartes', 4)">
+        <i class="fas fa-money-check fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Cartes Jeunes</span>
+      </button>
+            <button *ngIf="(role === 'ROLE_ADMIN')" [ngClass]="{'active' : show === 5}" class="list-group-item list-group-item-action py-1 ripple" (click)="routing('/espace/demandes', 5)">
+        <i class="fas fa-address-card fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Demandes</span>
+      </button>
+            <button *ngIf="!(role === 'ROLE_ADMIN_GENERAL')" [ngClass]="{'active' : show === 6}" class="list-group-item list-group-item-action py-1 ripple" (click)="routing('/espace/groupes', 6)">
+        <i class="fas fa-users fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Groupes</span>
+      </button>
+            <button *ngIf="!(role === 'ROLE_JEUNES')" [ngClass]="{'active' : show === 6}" class="list-group-item list-group-item-action py-1 ripple" (click)="routing('/espace/groupes', 6)">
+      <i class="fas fa-users fa-fw me-3" style="font-size: 14px"></i>
+      <span style="font-size: 14px">Groupes</span>
+    </button>
+            <button *ngIf="role === 'ROLE_ADMIN'" [ngClass]="{'active' : show === 8}" class="list-group-item list-group-item-action py-1 ripple" (click)="routing('/espace/points', 8)">
+        <i class="fas fa-gift fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Points cadeaux</span>
+      </button>
+            <button *ngIf="role === 'ROLE_ADMIN_GENERAL'" [ngClass]="{'active' : show === 9}" (click)="routing('/espace/statistique', 9);" class="list-group-item list-group-item-action py-1 ripple">
+        <i class="fas fa-chart-pie fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Statistique</span>
+      </button>
+            <button *ngIf="role === 'ROLE_JEUNES'" [ngClass]="{'active' : show === 9}" (click)="routing('/espace/Maison', 9);" class="list-group-item list-group-item-action py-1 ripple">
+        <i class="fas fa-chart-pie fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Maison</span>
+      </button>
+            <button *ngIf="role === 'ROLE_JEUNES'" [ngClass]="{'active' : show === 10}" (click)="routing('/espace/carte-jeune', 10)" class="list-group-item list-group-item-action py-1 ripple">
+        <i class="fas fa-gift fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Points cadeaux</span></button>
+            <button *ngIf="role === 'ROLE_JEUNES'" [ngClass]="{'active' : show === 11}" (click)="routing('/espace/carte', 11)" class="list-group-item list-group-item-action py-1 ripple">
+        <i class="fas fa-id-card-alt fa-fw me-3" style="font-size: 14px"></i>
+        <span style="font-size: 14px">Carte jeunes</span></button>
+        </div>
+    </div>
+</nav>

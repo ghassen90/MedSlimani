@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <section class="mb-4">
+    <div class="row">
+      <div class="col-12 mb-4 text-end">
+        <button data-mdb-toggle="modal" data-mdb-target="#ajouterMaison" class="btn btn-primary btn-md">Ajouter
+          <i class="fas fa-plus" style="margin-left: 5px"></i>
+        </button>
+      </div>
+      <div
+        class="modal fade"
+        id="ajouterMaison"
+        data-mdb-backdrop="static"
+        data-mdb-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Ajouter</h5>
+              <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="formAdmin" (ngSubmit)="addAdministrateur()">
+                <div  class="md-form md-outline">
+                  <input formControlName="nom" mdbInput type="text" class="form-control" placeholder="Nom">
+                </div>
+
+                <div  class="md-form md-outline mt-3">
+                  <input formControlName="prenom" mdbInput type="text" class="form-control" placeholder="Prenom">
+                </div>
+
+                <div  class="md-form md-outline mt-3">
+                  <input formControlName="tel" mdbInput type="tel" class="form-control" placeholder="Telephone">
+                </div>
+
+                <div  class="md-form md-outline mt-3">
+                  <input formControlName="password" mdbInput type="password" class="form-control" placeholder="password">
+                </div>
+
+                <div class="text-center dark-grey-text">
+                  <a class="btn btn-outline-info btn-md mt-3 waves-effect" role="button">
+                    Charger image<i class="fa fa-upload" style="margin-left: 10px"></i></a>
+                </div>
+                <div class="modal-footer mt-3">
+                  <button  type="submit" data-mdb-dismiss="modal" aria-label="Close" class="btn btn-secondary btn-block mb-4">Ajouter</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header text-center py-3">
+        <h5 class="mb-0 text-center">
+          <strong style="font-size: 25px; color: gray; font-weight: bold">Liste des Utilisateurs</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+            <tr>
+              <th>Photo</th>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Telehone</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of listUsers">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="/assets/images/images/user/admin.png"
+                    class="rounded-circle"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                  />
+                </div>
+              </td>
+              <td>
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">{{user.nom}}</p>
+
+                  </div>
+              </td>
+              <td>
+                <p class="fw-bold mb-1">{{user.prenom}}</p>
+              </td>
+              <td>
+                <p class="fw-bold mb-1">{{user.tel}}</p>
+              </td>
+
+              <td>
+                <!--<p class="fw-bold mb-1">{{getRole(user.roles)}}</p>-->
+                <p class="fw-bold mb-1">{{user.roles}}</p>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-link btn-rounded btn-sm fw-bold">
+                  <span style="color: green;">Active</span>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

@@ -1,0 +1,81 @@
+<div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <span style="font-size: 25px; color: gray; font-weight: bold">Liste des Maisons de Jeunesse</span>
+        </div>
+    </div>
+    <hr>
+    <div class="container my-5">
+        <section>
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-6 mb-3 col-12" *ngFor="let groupe of ListaMaisons | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <a [routerLink]="['/espace/Maison', groupe?.id_maisonjeunes]">
+                        <div style="border: rgba(0,0,0,0.33) 1px solid" class="card card-ecommerce">
+                            <div class="row">
+                                <div class="col-12 text-end">
+                                    <span class="p-2" style="color: orange;" *ngIf="role === 'ROLE_ADMIN'"></span>
+                                    <!-- <button *ngIf="role === 'ROLE_JEUNES'" (click)="regoindreGroup(groupe)" class="btn btn-primary btn-md">
+                    <i class="fas fa-plus-circle"></i><span style="margin-left: 5px">Rejoindre</span>
+                  </button> -->
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <img class="pt-4 responsive-image" [src]="groupe?.image_maison || 'assets/images/images/maisonJeunes/mj_ariana.jfif'" (error)="onImageError($event)" style="border-radius: 10px;" alt="Sample image">
+                                    <!-- <img class="pt-4" src="assets/images/images/groupe/sport.png" style="border-radius: 10px" height="150" alt="Sample image"> -->
+                                </div>
+                                <div class="col-8 pl-lg-0">
+                                    <div class="card z-depth-0">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-1">
+                                                <strong><a
+                                                        class="dark-grey-text">{{groupe.nom_maison_jeunes}}</a></strong>
+                                            </h5>
+                                            <div class="row" style="border-radius: 10px">
+                                                <p style="text-align: justify;">{{groupe.adresse}}</p>
+                                            </div>
+                                            <div class="row" style="border-radius: 10px">
+                                                <p style="font-weight: bold;">{{groupe.wilaya_name}}</p>
+                                                <p style="font-weight: bold;">{{groupe.commune_name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="row">
+                <div class="col-12 text-center my-3">
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="!ListaMaisons.length">
+                <div class="col-12 text-center">
+                    <span style="font-weight: bold; font-size: 18px; color: gray">Aucun élément</span>
+                </div>
+            </div>
+
+            <!-- Popup Update Group Modal -->
+            <div class="modal fade" id="updateGroup" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modifier un groupe</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!-- Additional modal content -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Popup Update Group Modal -->
+        </section>
+    </div>
+</div>

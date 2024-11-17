@@ -1,0 +1,68 @@
+<div class="container my-5">
+    <!-- Section: Block Content -->
+    <section>
+        <div class="row">
+            <div class="modal fade" id="ajouterPointCadeaux" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modifier points cadeaux</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="formPointCadeaux">
+                                <!--input  -->
+                                <div class="input-group mt-2 mb-2">
+                                    <input formControlName="point_cadeaux" mdbInput type="text" class="form-control" value="{{pointsCadeaux.point_cadeaux}}" placeholder="Point Cadeaux">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" (click)="upPointCadeaux()" class="btn btn-secondary btn-block mb-4">Modifier</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-list">
+                    <div class="card-header text-center py-3">
+                        <h5 class="mb-0 text-center">
+                            <strong style="font-size: 25px; color: gray; font-weight: bold"> Liste des points des cadeaux</strong>
+                        </h5>
+                        <ul class="list-unstyled d-flex align-items-center mb-0">
+                        </ul>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table align-middle mb-0 bg-white">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col"> Points cadeaux</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let user of users">
+                                 
+                                    <td scope="row"><a class="text-black">{{user.nom}}</a></td>
+                                    <td scope="row"><a class="text-black">{{user.prenom}}</a></td>
+
+                                    <td class="pt-2 pb-0"><span class="badge badge-success">{{user.point_cadeaux }} Points</span></td>
+                                    <td scope="row" style="color: orange;">
+                                        <i (click)="updatePointCadeaux(user.id_pointcadeaux)" type="button" data-mdb-toggle="modal" data-mdb-target="#ajouterPointCadeaux" class="fas fa-pen"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Section: Block Content -->
+</div>

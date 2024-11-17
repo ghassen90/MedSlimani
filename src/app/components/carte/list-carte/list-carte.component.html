@@ -1,0 +1,41 @@
+<div class="container my-5">
+  <section>
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-list">
+          <div class="card-header text-center py-3">
+
+            <h5 class="mb-3 text-center">
+              <strong style="font-size: 30px; color: gray; font-weight: bold">Liste des demandes</strong>
+            </h5>
+
+          </div>
+          <div class="card-body" *ngIf="listeDemande?.length">
+            <ul class="list-unstyled mb-0" *ngFor="let demande of listeDemande">
+              <li class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                <div class="d-inline-flex">
+                  <p class="mb-0"><span class="text" style="margin-right: 20px">{{demande.id_cart ? demande.id_cart : demande.id_group_user}}</span></p>
+                </div>
+                <div class="d-inline-flex">
+                  <p class="mb-0"><span class="text" style="margin-right: 20px">{{demande.type}}</span></p>
+                </div>
+                <div class="tools">
+                  <span class="badge badge-success" style="margin-right: 10px"><i class="far fa-clock" style="margin-right: 10px"></i>2 mins</span>
+                  <span style="color: orange; cursor: none" *ngIf="demande.status === 'accept'">Deja accepter</span>
+                  <span (click)="acceptDemande(demande)" style="color: green; cursor: pointer" *ngIf="(demande.status === 'encours')">Accepter</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body" *ngIf="!listeDemande?.length">
+            <div class="row">
+              <div class="col-12 text-center">
+                <span style="color: gray; font-size: 20px">Aucune demande</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

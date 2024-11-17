@@ -1,0 +1,32 @@
+
+.intro {
+  height: 100%;
+}
+
+@media (min-height: 300px) and (max-height: 450px) {
+  .intro {
+    height: auto;
+  }
+}
+
+
+.fas.fa-laptop {
+  font-size: 19rem;
+}
+
+@media (max-width: 991px) {
+  .fas.fa-laptop {
+    font-size: 12rem;
+  }
+};
+.navbar-brand{
+  color: rgb(79, 79, 79);
+}
+.card{
+  border-radius: 1rem;
+  margin-top: 150px !important;
+}
+.btnL{
+background-color: #710cf5;
+border: #710cf5;
+}

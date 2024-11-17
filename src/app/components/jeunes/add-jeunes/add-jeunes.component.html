@@ -1,0 +1,38 @@
+<div class="container my-5">
+
+  
+  <!-- Section: Block Content -->
+  <section>
+    
+    <h3 class="font-weight-bold text-center dark-grey-text pb-2">Points cadeaux </h3>
+    <hr class="w-header my-4">
+
+    <div class="row white-text">
+      <!-- Grid column -->
+      <!-- Grid column -->
+      <div class="col-12">
+ {{ point |json}}
+        <!-- Card Blue -->
+        <div class="card classic-admin-card light-blue lighten-1" style="border: solid 1px gray">
+          <div class="card-body py-3">
+            <i style="color: rgb(113, 12, 122); font-size: 30px;" class="fas fa-gift mb-2"></i>
+            <p style="ont-size: 40px; font-weight: bold;">Points</p>
+            <h4>{{point?.point_cadeaux}}</h4>
+          </div>
+          <div class="progress md-progress">
+            <div class="progress-bar grey darken-3" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="card-body pt-2 pb-3">
+            <p class="small mb-0">Taux des points cadeaux (75%)</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- Section: Block Content -->
+  
+
+</div>
