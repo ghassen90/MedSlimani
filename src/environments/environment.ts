@@ -3,13 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   baseUrl : "http://51.222.156.45:3000"
 };
-export const environmenttest = {
-  production: false,
-  baseUrl : "http://localhost:3000"
-};
+ 
 
 /*
  * For easier debugging in development mode, you can import the following file
